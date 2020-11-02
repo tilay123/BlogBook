@@ -1,0 +1,14 @@
+{
+  "name": "postbook",
+  "version": "1.0.0",
+  "description": "This is a simple dynamic website that allows users to upload posts. This is a term project created for CSE389.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zachary Tyler Williams, and Rory Yang",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
