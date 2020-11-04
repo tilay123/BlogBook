@@ -1,5 +1,5 @@
 # PostBook
-This is a simple dynamic website that allows users to upload posts. This is a term project created for CSE389 at Syracuse University.
+This is a simple dynamic website that allows users to upload posts. This is also a term project created for CSE389 at Syracuse University.
 
 # Authors
 Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zach Williams, and Rory Yang
