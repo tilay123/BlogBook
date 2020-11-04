@@ -48,7 +48,8 @@
             </div>
 
             <div class="form-wrapper">
-                <textarea name="bio" id="sign_up_bio" placeholder="Enter bio here..." class="form-control-textarea"></textarea>
+                <textarea name="bio" id="sign_up_bio" placeholder="Enter bio here..."
+                    class="form-control-textarea"></textarea>
             </div>
 
             <div class="signup-form-btn">
@@ -68,9 +69,21 @@
     <!-- authenticator.js runs concurrently every second to check if user is authenticated. -->
     <script>
         // This runs concurrently every second to check if user is authenticated.
-        firebase.auth().onAuthStateChanged((user) => {
+        const db = firebase.firestore()
+
+
+        firebase.auth().onAuthStateChanged(async (user) => {
             if (user) {
-                window.location.href = "home.html"
+                const userId = firebase.auth().currentUser.uid
+
+                const userRef = db.collection('users').doc(userId);
+                const doc = await userRef.get();
+
+                //console.log("exists: " +doc.exists)
+                if (doc.exists){
+                    window.location.href = "home.html"
+                }
+                
             }
         });
     </script>
