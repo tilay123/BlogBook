@@ -32,4 +32,14 @@ var firebaseConfig = {
     }
   });
 
+  // when the user click "sign out" button it will sign out the user.
+  $("#sign-out-button").click(function () {
+    firebase.auth().signOut(); // check caps
+   
+  });
+
+
+
+
+
 

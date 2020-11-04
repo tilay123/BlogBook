@@ -62,7 +62,8 @@
 
     <script src="index.js"></script>
     
-    <script>
+    <!-- authenticator.js runs concurrently every second to check if user is authenticated. -->
+    <script >
         // This runs concurrently every second to check if user is authenticated.
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -70,7 +71,6 @@
             }
         });
     </script>
-
 
 </body>
 
