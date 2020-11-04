@@ -1,53 +1,81 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <title>Blogbook</title>
-        <body style="background-color:gray;">
-        </body>
-</head>
-<body>
-        <div class = "inner">
 
-            <form action="">
 
-                <h3>Sign Up</h3>
+    <!-- jQuery-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 
-                <div class = "form-wrapper">
-                    <input id = "firstName" type="firstName" placeholder = "First Name" class="form-control">
-                </div>
-
-                <div class = "form-wrapper">
-                    <input id = "lastName" type="lastName" placeholder = "Last Name" class="form-control">
-                </div>
-
-                <div class = "form-wrapper">
-                    <input id = "email" type="email" placeholder = "Email address" class="form-control">
-                </div>
-
-                <div class = "form-wrapper">
-                    <input id = "passoward" type="password" placeholder = "Password" class="form-control">
-                </div>
-
-                <div class = "form-wrapper">
-                    <input id = "confirm-passoward" type="password" placeholder = "Confirm Password" class="form-control">
-                </div>
-
-                <div class = "form-wrapper">
-                    <textarea name = "bio"  placeholder = "Enter bio here..."class = "form-control-textarea"></textarea>
-                </div>
-
-                <div class = "signup-form-btn">
-                    <button id="btn-signup" type="button">
-                        Register
-                    </button>
-                </div>
-
-                <div class = "accountLink">
-                    <a href="signin.html">Already have an account?</a>
-                </div>
-            </form>
-        </div>
+<body style="background-color:gray;">
 </body>
+</head>
+
+<body>
+    <div class="inner">
+
+        <form action="">
+
+            <h3>Sign Up</h3>
+
+            <div class="form-wrapper">
+                <input id="firstName" type="firstName" placeholder="First Name" class="form-control">
+            </div>
+
+            <div class="form-wrapper">
+                <input id="lastName" type="lastName" placeholder="Last Name" class="form-control">
+            </div>
+
+            <div class="form-wrapper">
+                <input id="email" type="email" placeholder="Email address" class="form-control">
+            </div>
+
+            <div class="form-wrapper">
+                <input id="passoward" type="password" placeholder="Password" class="form-control">
+            </div>
+
+            <div class="form-wrapper">
+                <input id="confirm-passoward" type="password" placeholder="Confirm Password" class="form-control">
+            </div>
+
+            <div class="form-wrapper">
+                <textarea name="bio" placeholder="Enter bio here..." class="form-control-textarea"></textarea>
+            </div>
+
+            <div class="signup-form-btn">
+                <button id="btn-signup" type="button">
+                    Register
+                </button>
+            </div>
+
+            <div class="accountLink">
+                <a href="signin.html">Already have an account?</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="index.js"></script>
+
+    <!-- authenticator.js runs concurrently every second to check if user is authenticated. -->
+    <script>
+        // This runs concurrently every second to check if user is authenticated.
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                window.location.href = "home.html"
+            }
+        });
+    </script>
+</body>
+
 </html>
