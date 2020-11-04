@@ -2,7 +2,7 @@
 This is a simple dynamic website that allows users to upload posts. This is a term project created for CSE389 at Syracuse University.
 
 # Authors
-Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zachary Tyler Williams, and Rory Yang
+Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zach Williams, and Rory Yang
 
 # Prerequisites
   1. Install Node.js and npm. More Info: https://www.npmjs.com/get-npm
