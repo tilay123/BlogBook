@@ -38,7 +38,34 @@ var firebaseConfig = {
    
   });
 
+  $("#btn-signup").click(function (e) {
 
+    const email = $("#sign_up_email").val()
+    const pass1 = $("#sign_up_password").val()
+    const passConfirm = $("#confirm-password").val()
+    const bio = $("#sign_up_bio").val()
+    const firstName = $("#sign_up_firstName").val()
+    const lastName = $("#sign_up_lastName").val()
+
+    console.log("Sign UP:" + email + " " + pass1 + " " + passConfirm );
+  
+    if (email != "" && pass1 != "" && passConfirm != "" && bio != "" && firstName != "" && lastName != "") {
+  
+      if (pass1 == passConfirm) {
+        var signedInUser = firebase.auth().createUserWithEmailAndPassword(email, pass1).catch((error) => {
+          alert(error.message);
+        });
+
+        console.log(signedInUser.uid)
+  
+      } else {
+        alert("Password didn't match")
+      }
+  
+    } else {
+      alert("NO fields can be empty")
+    }
+  });
 
 
 
