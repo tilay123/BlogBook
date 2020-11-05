@@ -1,4 +1,4 @@
-# PostBook
+# BlogBook
 This is a simple dynamic website that allows users to upload posts. This is also a term project created for CSE389 at Syracuse University.
 
 # Authors
