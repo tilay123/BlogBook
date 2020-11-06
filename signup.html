@@ -5,6 +5,79 @@
 <head>
     <meta charset="utf-8" />
     <title>Blogbook</title>
+        <body style="background-color: #ddd2c4;">
+        </body>
+        <style>
+            .form-wrapper{
+              position: relative;
+            }
+
+            .form-control{
+              border: none;
+              border-bottom: 1px solid #333;
+              display: block;
+              width: 100%;
+              height: 30px;
+              margin-bottom: 15px;
+              background-color: #F5F5F5;
+            }
+
+            .form-control-textarea{s
+              border: 1px solid #333;
+              display: block;
+              width: 100%;
+              height: 200px;
+              padding: 0;
+              margin-bottom: 25px;
+            }
+            }
+            .accountLink{
+            }
+
+            .inner {
+              border:7px solid #ece1d4;
+              padding: 5px;
+              background: #fff;
+              margin: auto;
+              display: flex;
+              max-width:600px;}
+             .inner form {
+                width: 100%;
+                padding-top: 5px;
+                padding-left: 50px;
+                padding-right: 50px; }
+             .inner h3 {
+                font-size: 25px;
+                text-align: center;}
+              .accountLink{
+                text-align: center;
+                padding-top: 10px;
+            }
+            button{
+              background-color: light-gray;
+              border: none;
+              width: 164px;
+              height: 51px;
+              margin: auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 0px;
+              font-size: 15px;
+            }
+
+            .logo-inner{
+              border:7px solid #ece1d4;
+              padding: 5px;
+              background: #fff;
+              max-width: 100px;
+              font-size: 20px;
+              text-align:center;
+              padding:25px;
+              padding-top: 0px;
+              max-height: 50px;
+            }
+        </style>
 
 
     <!-- jQuery-->
@@ -21,6 +94,13 @@
 </head>
 
 <body>
+    
+    <div class="logo">
+        <div class = "logo-inner">
+            <h4> BlogBook </h4>    
+        </div>
+    </div>
+    
     <div class="inner">
 
         <form action="">
@@ -28,26 +108,32 @@
             <h3>Sign Up</h3>
 
             <div class="form-wrapper">
+                <label for="firstName">First Name:</label>
                 <input id="sign_up_firstName" type="firstName" placeholder="First Name" class="form-control">
             </div>
 
             <div class="form-wrapper">
+                <label for="lastName">Last Name:</label>
                 <input id="sign_up_lastName" type="lastName" placeholder="Last Name" class="form-control">
             </div>
 
             <div class="form-wrapper">
+                 <label for="email">Email:</label>
                 <input id="sign_up_email" type="email" placeholder="Email address" class="form-control">
             </div>
 
             <div class="form-wrapper">
+                <label for="password">Password:</label>
                 <input id="sign_up_password" type="password" placeholder="Password" class="form-control">
             </div>
 
             <div class="form-wrapper">
+                <label for="confire-password">Confirm Password:</label>
                 <input id="confirm-password" type="password" placeholder="Confirm Password" class="form-control">
             </div>
 
             <div class="form-wrapper">
+                 <label for="bio">Bio:</label>
                 <textarea name="bio" id="sign_up_bio" placeholder="Enter bio here..."
                     class="form-control-textarea"></textarea>
             </div>
