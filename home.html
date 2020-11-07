@@ -115,7 +115,7 @@
 </head>
 
 <body>
-    <a href="" class="button" id="sign-out-button">Sign out</a><a href="" class="button">View Profile</a><a href="" class="button">Change Account Info</a>
+    <a href="" class="button" id="sign-out-button">Sign out</a><a href="profile.html" class="button">View Profile</a><a href="" class="button">Change Account Info</a>
     <div id="wrapper">
     <h1>Welcome to BlogBook - Upload Post</h1>
     <div id="homeForm">
@@ -124,14 +124,16 @@
                 <input type="file"
                      name="postPic"
                     id="postPic"
-                    name="postPic"><br />
-             <label for="postText">New Post:</label>
+                    name="postPic"
+                    accept="image/*"><br />
+             <label for="postText">Description:</label>
                  <textarea id="postText" form="blogForm"></textarea><br />
-             <input type="submit">
+             <button type="submit" id="submit_post_button">Submit</button>
         </form>
     </div>
     <h1>View User Profiles</h1>
     <div id="listing">
+        <h1>Loading users...</h1>
         <!-- <ul> //TIL: I have copied this code to homepageHelper.js to manage live user data.
             <li class="outerli"><ul class="innerul">
                 <li><h3>User1</h3></li>
