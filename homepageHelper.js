@@ -111,9 +111,5 @@ $("#submit_post_button").click( function (){
         })
       }
     )
-
-
   }
-
-
 })

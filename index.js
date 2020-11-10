@@ -15,7 +15,6 @@ if (!firebase.apps.length) {
   firebase.analytics();
 }
 
-
 // Til: When a user clicks "Sign In" button, it will check if the email and password entered is valid. If it's not, 
 // then it will show a dialog box with the error message. If it is valid then it will let the user
 // go the home page(home.html).
