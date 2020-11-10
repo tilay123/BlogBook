@@ -1,4 +1,6 @@
-// // Initializing Firebase project
+$("#upload_progress_bar").hide()
+
+// Initializing Firebase project
 var firebaseConfig = {
   apiKey: "AIzaSyABOwyUGeAWpwaPro1iPmIJ3A-wGXaiBv0",
   authDomain: "postbook-f5b68.firebaseapp.com",
@@ -43,13 +45,19 @@ db.collection("users")
 
 // When user submit a post below function will execute. If both image and description exists then it will upload
 // it to the firestore and firebase storage
-$("#submit_post_button").click(async () => {
+$("#submit_post_button").click( function (){
 
   const file = $("#postPic").prop("files")[0]
   const description = $("#postText").val()
 
+  console.log("File: " + file)
+  console.log("Desc:"+description)
+
+
   if (file == null || !description) {
     alert("Image or description cannot be empty.")
+
+    // return false; // returning false will prevent being reloded
   } else { // If both image and description exist.
     const userId = firebase.auth().currentUser.uid
     const db = firebase.firestore();
@@ -59,17 +67,30 @@ $("#submit_post_button").click(async () => {
     const fileName = time.getTime() + "_" + file.name
 
     const uploadTask = storageRef.child("blogImages/" + fileName).put(file)
-
+    $("#upload_progress_bar").show()
     // uploading picture to firestorage
     // Documentation: https://firebase.google.com/docs/storage/web/upload-files
+    
     uploadTask.on("state_changed",
       function (snapshot) {
         //about upload status
+        const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100 )
+        
+    
+        $("#upload_progress_bar").attr("style", "width:" + percent + "%")
+        if (percent == 100){
+          $("#upload_progress_bar").html("Successfully Uploded!")
+        } else{
+          $("#upload_progress_bar").html(percent + "%")
+        }
+        
+
+
       },
       function (error) {
         // if error
         alert("Theres an error uploading your image. Error Message:" + error.message)
-      }, function () {
+      }, async function () {
         // if successful
 
         uploadTask.snapshot.ref.getDownloadURL().then(async function (downloadUrl) {
@@ -83,15 +104,13 @@ $("#submit_post_button").click(async () => {
 
           await db.collection('blogs').doc(userId).collection('userBlogs').doc().set(blogData).catch(function (error) {
             alert("Error uploading user Data:" + error.message)
+            
           });
           // after uploading the post reset the form.
           $("#blogForm")[0].reset()
         })
       }
     )
-
-
-
 
 
   }

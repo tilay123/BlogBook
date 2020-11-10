@@ -1,6 +1,7 @@
 "use strict";
 
-// // Initializing Firebase project
+$("#upload_progress_bar").hide(); // Initializing Firebase project
+
 var firebaseConfig = {
   apiKey: "AIzaSyABOwyUGeAWpwaPro1iPmIJ3A-wGXaiBv0",
   authDomain: "postbook-f5b68.firebaseapp.com",
@@ -34,34 +35,46 @@ db.collection("users").get().then(function (querySnapshot) {
 }); // When user submit a post below function will execute. If both image and description exists then it will upload
 // it to the firestore and firebase storage
 
-$("#submit_post_button").click(function _callee2() {
-  var file, description, userId, _db, time, storageRef, fileName, uploadTask;
+$("#submit_post_button").click(function () {
+  var file = $("#postPic").prop("files")[0];
+  var description = $("#postText").val();
+  console.log("File: " + file);
+  console.log("Desc:" + description);
 
-  return regeneratorRuntime.async(function _callee2$(_context2) {
-    while (1) {
-      switch (_context2.prev = _context2.next) {
-        case 0:
-          file = $("#postPic").prop("files")[0];
-          description = $("#postText").val();
+  if (file == null || !description) {
+    alert("Image or description cannot be empty."); // return false; // returning false will prevent being reloded
+  } else {
+    // If both image and description exist.
+    var userId = firebase.auth().currentUser.uid;
 
-          if (file == null || !description) {
-            alert("Image or description cannot be empty.");
-          } else {
-            // If both image and description exist.
-            userId = firebase.auth().currentUser.uid;
-            _db = firebase.firestore();
-            time = new Date();
-            storageRef = firebase.storage().ref(); // firestore reference
+    var _db = firebase.firestore();
 
-            fileName = time.getTime() + "_" + file.name;
-            uploadTask = storageRef.child("blogImages/" + fileName).put(file); // uploading picture to firestorage
-            // Documentation: https://firebase.google.com/docs/storage/web/upload-files
+    var time = new Date();
+    var storageRef = firebase.storage().ref(); // firestore reference
 
-            uploadTask.on("state_changed", function (snapshot) {//about upload status
-            }, function (error) {
-              // if error
-              alert("Theres an error uploading your image. Error Message:" + error.message);
-            }, function () {
+    var fileName = time.getTime() + "_" + file.name;
+    var uploadTask = storageRef.child("blogImages/" + fileName).put(file);
+    $("#upload_progress_bar").show(); // uploading picture to firestorage
+    // Documentation: https://firebase.google.com/docs/storage/web/upload-files
+
+    uploadTask.on("state_changed", function (snapshot) {
+      //about upload status
+      var percent = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
+      $("#upload_progress_bar").attr("style", "width:" + percent + "%");
+
+      if (percent == 100) {
+        $("#upload_progress_bar").html("Successfully Uploded!");
+      } else {
+        $("#upload_progress_bar").html(percent + "%");
+      }
+    }, function (error) {
+      // if error
+      alert("Theres an error uploading your image. Error Message:" + error.message);
+    }, function _callee2() {
+      return regeneratorRuntime.async(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
               // if successful
               uploadTask.snapshot.ref.getDownloadURL().then(function _callee(downloadUrl) {
                 var blogData;
@@ -92,13 +105,13 @@ $("#submit_post_button").click(function _callee2() {
                   }
                 });
               });
-            });
-          }
 
-        case 3:
-        case "end":
-          return _context2.stop();
-      }
-    }
-  });
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      });
+    });
+  }
 });
