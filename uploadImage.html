@@ -16,6 +16,13 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+
     <style>
         body {
             margin: 0;
@@ -46,14 +53,19 @@
         <h2>Upload Profile Picture</h2>
 
         <form action="/action_page.php">
-            <input type="file" id="imageUpload" name="image1">
-            <button type="button" class="btn btn-primary" style="margin: 20px;"> Submit</button>
+            <input type="file" id="imageUpload" name="image1" accept="image/*">
+            <button type="button" class="btn btn-primary" id="submit_profile_picture" style="margin: 20px;"> Submit</button>
+
+            <div class="progress" style="margin-top: 10px;" >
+                <div class="progress-bar bg-success" id="upload_progress_bar_profile" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+              </div>
         </form>
 
     </div>
 
     <!-- authenticator.js runs concurrently every second to check if user is authenticated. It will help go 
     back to sign in page (index.html) if the user sign out-->
+    <script src="uploadImageHelper.js"></script>
     <script>
         firebase.auth().onAuthStateChanged((user) => {
             if (!user) {
