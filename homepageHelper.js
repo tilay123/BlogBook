@@ -31,8 +31,8 @@ db.collection("users")
         `
             <div>
                 <li class="outerli"><ul class="innerul"> 
+                <li><img src="${doc.data().profilePicture ?? "elk.png"}" height="100" style="border-radius: 50%"></li>
                 <li><h3>${doc.data().firstName + " " + doc.data().lastName}</h3></li>
-                <li><img src="${doc.data().profilePicture ?? "elk.png"}" height="200" ></li>
                 <li><b>Bio: </b>${doc.data().bio}</li></ul></li>
             </div>
             `
