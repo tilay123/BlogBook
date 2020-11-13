@@ -65,7 +65,8 @@ $("#btn-signup").click(async function (e) {
         "lastName": lastName,
         "bio": bio,
         "createdDate": createdDate.toString(),
-        "uid": userId
+        "uid": userId,
+        "email": email
       }
 
       console.log(userId)

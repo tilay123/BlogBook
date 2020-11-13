@@ -72,7 +72,8 @@ $("#btn-signup").click(function _callee(e) {
             "lastName": lastName,
             "bio": bio,
             "createdDate": createdDate.toString(),
-            "uid": userId
+            "uid": userId,
+            "email": email
           };
           console.log(userId); // uploading user data to firstore ***************************************
           // const admin = require('firebase-admin');

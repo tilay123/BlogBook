@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html> 
-    <head>
-        <title>Profile</title>
+<html>
+
+<head>
+    <title>Profile</title>
 
 
-         <!-- BootStrap -->
+    <!-- BootStrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <!-- jQuery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -25,121 +26,177 @@
         body {
             background-color: #3b5998;
         }
+
         .button {
-                margin-left: 20px;
-                padding: 5px;
-                padding-bottom: 3px;
-                border-top: 2px solid #8b9dc3;
-                border-left: 2px solid #8b9dc3;
-                border-right: 2px solid #8b9dc3;
-                background-color: white;
-                border-bottom: none;
-                /* font-size: 1.3em; */
-                font-family: "arial";
-                font-weight: bold;
-                text-decoration: none;
-                color: black;
-            }
-            .button:hover {
-                color: black;
-                background-color: #f7f7f7;
-                text-decoration: underline;
-            }
-            #wrapper {
-                margin-top: 0px;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: auto;
-                padding-top: 5px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-bottom: 5px;
-                background-color: #ffffff;
-                border: 2px solid#8b9dc3;
-                border-radius: 4px;
-            }
-            h1 {
-                margin-top: 5px;
-                margin-bottom: 5px;
-                margin-left: auto;
-                margin-right: auto;
-                padding: 0px;
-                width: 70%;
-                text-align: center;
-                font-family: "arial";
-                border: 2px solid #3b5998;
-                border-radius: 4px;
-                background-color: #8b9dc3;
-            }
-            h3 {
-                margin: 5px;
-                padding: 10px;
-            }
-            #homeForm {
-                padding: 5px;
-                background-color: #f7f7f7;
-            }
-            #homeForm label {
-                display: block;
-                font-size: 1em;
-                font-weight: bold;
-            }
-            #homeForm textarea {
-                width: 100%;
-                height: 150px;
-                padding: 12px 20px;
-                box-sizing: border-box;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                background-color: #f8f8f8;
-                resize: none;
-            }
-            #listing ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-            .outerli {
-                display: inline-block;
-                width: 30%;
-                padding: 5px;
-                margin: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                background-color: #f7f7f7;
-            }
-            .innerul li {
-                display: block;
-                width: 100%;
-                text-align: center;
-            }
-    </style> 
-    </head>
+            margin-left: 20px;
+            padding: 5px;
+            padding-bottom: 3px;
+            border-top: 2px solid #8b9dc3;
+            border-left: 2px solid #8b9dc3;
+            border-right: 2px solid #8b9dc3;
+            background-color: white;
+            border-bottom: none;
+            /* font-size: 1.3em; */
+            font-family: "arial";
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+
+        .button:hover {
+            color: black;
+            background-color: #f7f7f7;
+            text-decoration: underline;
+        }
+
+        #wrapper {
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: auto;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 5px;
+            background-color: #ffffff;
+            border: 2px solid#8b9dc3;
+            border-radius: 4px;
+        }
+
+        h1 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0px;
+            width: 70%;
+            text-align: center;
+            font-family: "arial";
+            border: 2px solid #3b5998;
+            border-radius: 4px;
+            background-color: #8b9dc3;
+        }
+
+        h3 {
+            margin: 5px;
+            padding: 10px;
+        }
+
+        #homeForm {
+            padding: 5px;
+            background-color: #f7f7f7;
+        }
+
+        #homeForm label {
+            display: block;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        #homeForm textarea {
+            width: 100%;
+            height: 150px;
+            padding: 12px 20px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            resize: none;
+        }
+
+        #listing ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .outerli {
+            display: inline-block;
+            width: 30%;
+            padding: 5px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f7f7f7;
+        }
+
+        .innerul li {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
 
 
-    <body>
+<body>
 
 
-    <a href="home.html" class="button">Home</a><a href="" class="button">Edit Profile</a><a href="" class="button" id="sign-out-button">Sign out</a>
+    <a href="home.html" class="button">Home</a><a href="" class="button">Edit Profile</a><a href="" class="button"
+        id="sign-out-button">Sign out</a>
     <div id="wrapper">
 
+        <div id="userProfile">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center"> 
+                        <img
+                            src="elk.png" alt="profile picture" class="rounded-circle"
+                            width="150">
+                        <div class="mt-3">
+                            <h4>Til Baniya</h4>
+                            <p class="text-secondary mb-1">Email: ahh@.com</p>
+                            <p class="text-secondary mb-1">Joined: 10/1/2020</p>
+                            <p class="text-muted font-size-sm">Bio: zxxxasdfad</p> 
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="form-wrapper"> 
-        <form action="">
+
+
+
+        <div class="form-wrapper">
+
             <h1>User Name</h1>
-                <br>    
-            <img src="https://www.heidelberg.edu/sites/default/files/styles/865width/public/images/program-images/computer-science-2.jpg?itok=9N2z12gj" alt="Syracuse Campus" width="500" height="300">
-            <p style="float:right">Hello I am a student at Syracuse University. I am a senior computer science student and this is my blog page. </p>
-    </div><br><hr>
+            <br>
+            <img src="https://www.heidelberg.edu/sites/default/files/styles/865width/public/images/program-images/computer-science-2.jpg?itok=9N2z12gj"
+                alt="Syracuse Campus" width="500" height="300">
+            <p style="float:right">Hello I am a student at Syracuse University. I am a senior computer science
+                student and this is my blog page. </p>
+        </div><br>
+        <hr>
 
-    <div id="blogs">
-        <ul>
-            <img src="https://api.time.com/wp-content/uploads/2019/11/syracuse-university-campus.jpg?w=800&quality=85" alt="Computer science student doing work" width="500" height="300">
-            <p style="float:right">This is a picture of the campus of Syracuse Univeristy. I posted this picture because I thought that it looked nice.</p>
-        </ul>
-    </div>
+        <div id="blogs">
+            <ul>
+                <img src="https://api.time.com/wp-content/uploads/2019/11/syracuse-university-campus.jpg?w=800&quality=85"
+                    alt="Computer science student doing work" width="500" height="300">
+                <p style="float:right">This is a picture of the campus of Syracuse Univeristy. I posted this picture
+                    because I thought that it looked nice.</p>
+            </ul>
+        </div>
+
+        <script src="index.js"></script>
+
+        <script>
+            const profileParam = new URLSearchParams(window.location.search);
+            const profileUid = profileParam.get('uid');
+
+            console.log("Profule uid = " + profileUid)
+
+        </script>
+
+        <script>
+            firebase.auth().onAuthStateChanged((user) => {
+                if (!user) {
+                    window.location.href = "index.html"
+                }
+            });
+        </script>
 
 
+</body>
 
-    </body>
 </html>

@@ -26,13 +26,13 @@ db.collection("users")
   .get()
   .then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
-      //console.log(doc.id, " => ", doc.data());
+      //console.log(doc.id, " => ", doc.data().uid);
       htmlCode +=  // making Rudolph's html code dynamically generated
         `
             <div>
                 <li class="outerli"><ul class="innerul"> 
-                <li><img src="${doc.data().profilePicture ?? "elk.png"}" height="100" style="border-radius: 50%"></li>
-                <li><h3>${doc.data().firstName + " " + doc.data().lastName}</h3></li>
+                <li><img src="${doc.data().profilePicture || "elk.png"}" height="100" style="border-radius: 50%"></li>
+                <li><h3><a href="javascript:goToProfilePage( '${doc.data().uid}')"> ${doc.data().firstName + " " + doc.data().lastName}</a></h3></li>
                 <li><b>Bio: </b>${doc.data().bio}</li></ul></li>
             </div>
             `
@@ -113,3 +113,11 @@ $("#submit_post_button").click( function (){
     )
   }
 })
+
+var goToProfilePage = function (userUid){
+  console.log(userUid)
+// take the user to their profile page
+  window.location.href = "profile.html?uid=" + userUid
+
+}
+

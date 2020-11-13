@@ -25,9 +25,9 @@ var db = firebase.firestore(); // documentation: https://firebase.google.com/doc
 var htmlCode = "";
 db.collection("users").get().then(function (querySnapshot) {
   querySnapshot.forEach(function (doc) {
-    //console.log(doc.id, " => ", doc.data());
+    //console.log(doc.id, " => ", doc.data().uid);
     htmlCode += // making Rudolph's html code dynamically generated
-    "\n            <div>\n                <li class=\"outerli\"><ul class=\"innerul\"> \n                <li><h3>".concat(doc.data().firstName + " " + doc.data().lastName, "</h3></li>\n                <li><img src=\"elk.png\"></li>\n                <li><b>Bio: </b>").concat(doc.data().bio, "</li></ul></li>\n            </div>\n            ");
+    "\n            <div>\n                <li class=\"outerli\"><ul class=\"innerul\"> \n                <li><img src=\"".concat(doc.data().profilePicture || "elk.png", "\" height=\"100\" style=\"border-radius: 50%\"></li>\n                <li><h3><a href=\"javascript:goToProfilePage( '").concat(doc.data().uid, "')\"> ").concat(doc.data().firstName + " " + doc.data().lastName, "</a></h3></li>\n                <li><b>Bio: </b>").concat(doc.data().bio, "</li></ul></li>\n            </div>\n            ");
   });
   $("#listing").html(htmlCode);
 })["catch"](function (error) {
@@ -115,3 +115,9 @@ $("#submit_post_button").click(function () {
     });
   }
 });
+
+var goToProfilePage = function goToProfilePage(userUid) {
+  console.log(userUid); // take the user to their profile page
+
+  window.location.href = "profile.html?uid=" + userUid;
+};
