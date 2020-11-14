@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign In Form</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: #ffffff;
+            background-image: url("like.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat:no-repeat;
+        }
+
+        .inner {
+            width: 400px;
+            box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+            background: #ffffff;
+            padding: 30px;
+            margin: 15% auto 0;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        
+        <a class="navbar-brand">BlogBook</a>
+
+    </nav>
+
+
+    <div class="inner">
+
+        <form action="">
+            <h2>Edit Profile</h2>
+
+            <div class="firstName">
+                <input id="firstName" type="text" placeholder="First Name" class="form-control">
+            </div>
+
+            <div class="lastName">
+                <input id="lastName" type="test" placeholder="Last Name" class="form-control">
+            </div>
+
+            <div class="enterBio">
+               <textarea name="bio" id="sign_up_bio" placeholder="Enter bio here..." class="form-control-textarea"></textarea>
+           </div>
+
+            <div class="saveEdit">
+                <button id="btn-saveEdit" type="button">
+                    Save Edit
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
