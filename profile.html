@@ -133,30 +133,19 @@
 
     <a href="home.html" class="button">Home</a><a href="" class="button">Edit Profile</a><a href="" class="button"
         id="sign-out-button">Sign out</a>
+
     <div id="wrapper">
 
         <div id="userProfile">
         </div>
 
-        <div class="form-wrapper">
+        <h1>Blogs</h1>
 
-            <h1>User Name</h1>
-            <br>
-            <img src="https://www.heidelberg.edu/sites/default/files/styles/865width/public/images/program-images/computer-science-2.jpg?itok=9N2z12gj"
-                alt="Syracuse Campus" width="500" height="300">
-            <p style="float:right">Hello I am a student at Syracuse University. I am a senior computer science
-                student and this is my blog page. </p>
-        </div><br>
-        <hr>
-
-        <div id="blogs">
-            <ul>
-                <img src="https://api.time.com/wp-content/uploads/2019/11/syracuse-university-campus.jpg?w=800&quality=85"
-                    alt="Computer science student doing work" width="500" height="300">
-                <p style="float:right">This is a picture of the campus of Syracuse Univeristy. I posted this picture
-                    because I thought that it looked nice.</p>
-            </ul>
+        <div id="userBlogsList">
+            <h2>Loading Blogs...</h2>
         </div>
+
+    </div>
 
         <script src="index.js"></script>
 
@@ -205,8 +194,41 @@
                 }
             })
 
+            // Til: Adding blogs dynamically
+
+            var blogHtml = "";
+            db.collection("blogs").doc(profileUid).collection('userBlogs')
+                .get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        //console.log(doc.data())
+                        blogHtml +=  // making Kelvin's html code dynamically generated
+                            `
+                            <div>
+                                <ul>
+                                    <img src="${doc.data().imageUrl}"
+                                        alt="blog picture" width="500" height="300">
+                                        <p style="float:right">${doc.data().description}</p>
+                                </ul>
+                            </div>
+                            <hr>`
+                    });
+                    
+                    if (blogHtml == ""){
+
+                        $("#userBlogsList").html("<center><h2> This user have no blogs</h2></center>"); 
+                    } else{
+                        $("#userBlogsList").html(blogHtml);
+                    }
+
+                });
+
+
+
 
         </script>
+
+        
 
         <script>
             firebase.auth().onAuthStateChanged((user) => {
