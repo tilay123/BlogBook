@@ -26,14 +26,15 @@ db.collection("users")
   .get()
   .then(function (querySnapshot) {
     querySnapshot.forEach(function (doc) {
-      //console.log(doc.id, " => ", doc.data().uid);
+      //console.log(doc.id, " => ", doc.data().uid);'
+      //<li><b>Bio: </b>${doc.data().bio}</li></ul></li>   // idk if we need to show bio in home page
       htmlCode +=  // making Rudolph's html code dynamically generated
         `
             <div>
                 <li class="outerli"><ul class="innerul"> 
                 <li><img src="${doc.data().profilePicture || "elk.png"}" height="100" style="border-radius: 50%"></li>
                 <li><h3><a href="javascript:goToProfilePage( '${doc.data().uid}')"> ${doc.data().firstName + " " + doc.data().lastName}</a></h3></li>
-                <li><b>Bio: </b>${doc.data().bio}</li></ul></li>
+                
             </div>
             `
     });

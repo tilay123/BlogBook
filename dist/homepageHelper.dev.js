@@ -25,9 +25,10 @@ var db = firebase.firestore(); // documentation: https://firebase.google.com/doc
 var htmlCode = "";
 db.collection("users").get().then(function (querySnapshot) {
   querySnapshot.forEach(function (doc) {
-    //console.log(doc.id, " => ", doc.data().uid);
+    //console.log(doc.id, " => ", doc.data().uid);'
+    //<li><b>Bio: </b>${doc.data().bio}</li></ul></li>   // idk if we need to show bio in home page
     htmlCode += // making Rudolph's html code dynamically generated
-    "\n            <div>\n                <li class=\"outerli\"><ul class=\"innerul\"> \n                <li><img src=\"".concat(doc.data().profilePicture || "elk.png", "\" height=\"100\" style=\"border-radius: 50%\"></li>\n                <li><h3><a href=\"javascript:goToProfilePage( '").concat(doc.data().uid, "')\"> ").concat(doc.data().firstName + " " + doc.data().lastName, "</a></h3></li>\n                <li><b>Bio: </b>").concat(doc.data().bio, "</li></ul></li>\n            </div>\n            ");
+    "\n            <div>\n                <li class=\"outerli\"><ul class=\"innerul\"> \n                <li><img src=\"".concat(doc.data().profilePicture || "elk.png", "\" height=\"100\" style=\"border-radius: 50%\"></li>\n                <li><h3><a href=\"javascript:goToProfilePage( '").concat(doc.data().uid, "')\"> ").concat(doc.data().firstName + " " + doc.data().lastName, "</a></h3></li>\n                \n            </div>\n            ");
   });
   $("#listing").html(htmlCode);
 })["catch"](function (error) {
