@@ -131,32 +131,12 @@
 
 <body>
 
-
     <a href="home.html" class="button">Home</a><a href="" class="button">Edit Profile</a><a href="" class="button"
         id="sign-out-button">Sign out</a>
     <div id="wrapper">
 
         <div id="userProfile">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex flex-column align-items-center text-center"> 
-                        <img
-                            src="elk.png" alt="profile picture" class="rounded-circle"
-                            width="150">
-                        <div class="mt-3">
-                            <h4>Til Baniya</h4>
-                            <p class="text-secondary mb-1">Email: ahh@.com</p>
-                            <p class="text-secondary mb-1">Joined: 10/1/2020</p>
-                            <p class="text-muted font-size-sm">Bio: zxxxasdfad</p> 
-    
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
-
-
 
         <div class="form-wrapper">
 
@@ -184,7 +164,47 @@
             const profileParam = new URLSearchParams(window.location.search);
             const profileUid = profileParam.get('uid');
 
-            console.log("Profule uid = " + profileUid)
+            console.log("profileUid: " + profileUid);
+
+            const db = firebase.firestore()
+
+            if (profileUid == null) {
+                //const userId = firebase.auth().currentUser.uid
+                $("#userProfile").html("<h2>No Profile ID Given</h2>")
+
+            }
+            var profile = "";
+
+            db.collection('users').doc(profileUid).get().then(function (doc) {
+                if (doc.exists) {
+                    // console.log(doc.data().createdDate)
+                    const createdDate = doc.data().createdDate.split(" ");
+                    // console.log(createdDate)
+
+                    profile += `
+                <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center"> 
+                        <img
+                            src="${doc.data().profilePicture}" alt="profile picture" class="rounded-circle"
+                            width="150">
+                        <div class="mt-3">
+                            <h4>${doc.data().firstName + " " + doc.data().lastName}</h4>
+                            <p class="text-secondary mb-1">Email: ${doc.data().email}</p>
+                            <p class="text-secondary mb-1">Joined: ${createdDate[1] + " " + createdDate[2] + ", " + createdDate[3]}</p>
+                            <p class="text-muted font-size-sm">Bio: ${doc.data().bio}</p> 
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+                    $("#userProfile").html(profile)
+                } else {
+                    $("#userProfile").html("<h2>Profile Does Not Exist</h2>")
+                }
+            })
+
 
         </script>
 

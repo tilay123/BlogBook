@@ -119,5 +119,9 @@ $("#submit_post_button").click(function () {
 var goToProfilePage = function goToProfilePage(userUid) {
   console.log(userUid); // take the user to their profile page
 
+  if (userUid == null) {
+    userUid = firebase.auth().currentUser.uid;
+  }
+
   window.location.href = "profile.html?uid=" + userUid;
 };
