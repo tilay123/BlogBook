@@ -105,4 +105,19 @@ $("#btn-signup").click(function _callee(e) {
       }
     }
   });
+}); // Sending password reset email
+
+$("#send_password_reset_email").click(function (e) {
+  var email = $("#password_reset_email").val();
+
+  if (email != "") {
+    firebase.auth().sendPasswordResetEmail(email).then(function () {
+      alert("Password reset email sent. It may take up to 5 minutes to receive it. Please check your email to verify.");
+      window.location.replace("index.html");
+    })["catch"](function (error) {
+      alert(error.message);
+    });
+  } else {
+    alert("Email field can't be empty");
+  }
 });
