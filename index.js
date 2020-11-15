@@ -105,5 +105,9 @@ $("#send_password_reset_email").click(function (e) {
   }
 });
 
+var goToEditProfilePage = function (){
+// take the user to their profile page
+  const userUid = firebase.auth().currentUser.uid
+  window.location.href = "editProfile.html?uid=" + userUid
 
-
+}

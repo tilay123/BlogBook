@@ -20,6 +20,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 
     <style>
         body {
@@ -30,12 +31,12 @@
             background-image: url("painting.jpg");
             background-size: cover;
             background-position: center;
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
         }
 
         .inner {
             width: 400px;
-            box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
             background: #ffffff;
             padding: 30px;
             margin: 15% auto 0;
@@ -45,7 +46,6 @@
         hr.solid {
             border-top: 1px solid #bbb;
         }
-
     </style>
 
 </head>
@@ -53,14 +53,14 @@
 <body>
 
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
-        
+
         <a class="navbar-brand">BlogBook</a>
 
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
                 <a class="nav-link" href="home.html">Home</a>
-            </l>
+                </l>
 
         </ul>
 
@@ -73,19 +73,19 @@
             <h2>Change Account Information</h2>
 
             <div class="firstName">
-                <input id="firstName" type="text" placeholder="First Name" class="form-control">
+                <input id="firstName_edit_profile" type="text" placeholder="First Name" class="form-control">
             </div>
 
             <div class="lastName">
-                <input id="lastName" type="test" placeholder="Last Name" class="form-control">
+                <input id="lastName_edit_profile" type="test" placeholder="Last Name" class="form-control">
             </div>
 
             <hr class="solid">
 
-           <div class="form-group">
-            <h4>Bio</h4>
-            <textarea class="form-control" id="enterBio" rows="3"></textarea>
-          </div>
+            <div class="form-group">
+                <h4>Bio</h4>
+                <textarea class="form-control" id="enterBio" rows="3"></textarea>
+            </div>
 
             <div class="saveEdit">
                 <button id="btn-saveEdit" type="button">
@@ -96,6 +96,31 @@
         </form>
 
     </div>
+
+    <script src="index.js"></script>
+
+    <script>
+        const db = firebase.firestore();
+        const profileParam = new URLSearchParams(window.location.search);
+        const profileUid = profileParam.get('uid');
+        db.collection('users').doc(profileUid).get().then(function (doc) {
+
+            if (doc.exists) {
+                $("#firstName_edit_profile").val(doc.data().firstName)
+                $("#lastName_edit_profile").val(doc.data().lastName)
+                $("#enterBio").val(doc.data().bio)
+            }
+
+        });
+
+    </script>
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = "index.html"
+            }
+        });
+    </script>
 
 </body>
 

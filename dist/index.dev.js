@@ -121,3 +121,9 @@ $("#send_password_reset_email").click(function (e) {
     alert("Email field can't be empty");
   }
 });
+
+var goToEditProfilePage = function goToEditProfilePage() {
+  // take the user to their profile page
+  var userUid = firebase.auth().currentUser.uid;
+  window.location.href = "editProfile.html?uid=" + userUid;
+};
