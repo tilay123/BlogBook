@@ -127,3 +127,47 @@ var goToEditProfilePage = function goToEditProfilePage() {
   var userUid = firebase.auth().currentUser.uid;
   window.location.href = "editProfile.html?uid=" + userUid;
 };
+
+$("#btn-saveEdit").click(function _callee2() {
+  var db, profileParam, profileUid, firstName, lastName, bio, updatedData;
+  return regeneratorRuntime.async(function _callee2$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          db = firebase.firestore();
+          profileParam = new URLSearchParams(window.location.search);
+          profileUid = profileParam.get('uid');
+          firstName = $("#firstName_edit_profile").val();
+          lastName = $("#lastName_edit_profile").val();
+          bio = $("#enterBio").val();
+
+          if (!(firstName != "" && lastName != "" && bio != "")) {
+            _context2.next = 13;
+            break;
+          }
+
+          updatedData = {
+            "firstName": firstName,
+            "lastName": lastName,
+            "bio": bio
+          };
+          _context2.next = 10;
+          return regeneratorRuntime.awrap(db.collection('users').doc(profileUid).update(updatedData).then(function () {})["catch"](function (error) {
+            alert("Error updating user Data:" + error.message);
+          }));
+
+        case 10:
+          window.location.href = "home.html";
+          _context2.next = 14;
+          break;
+
+        case 13:
+          alert("No fields can be empty.");
+
+        case 14:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+});

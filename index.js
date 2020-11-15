@@ -111,3 +111,36 @@ var goToEditProfilePage = function (){
   window.location.href = "editProfile.html?uid=" + userUid
 
 }
+
+$("#btn-saveEdit").click(async function(){
+
+  const db = firebase.firestore();
+  const profileParam = new URLSearchParams(window.location.search);
+  const profileUid = profileParam.get('uid');
+
+  const firstName = $("#firstName_edit_profile").val()
+  const lastName = $("#lastName_edit_profile").val()
+  const bio = $("#enterBio").val()
+
+  if (firstName != "" && lastName!= "" && bio != ""){
+
+
+    const updatedData = {
+      "firstName": firstName,
+      "lastName": lastName,
+      "bio": bio
+    }
+
+    await db.collection('users').doc(profileUid).update(updatedData).then(function () { }).catch(function (error) {
+      alert("Error updating user Data:" + error.message)
+    });
+
+    window.location.href = "home.html"
+
+
+  } else {
+    alert("No fields can be empty.")
+  }
+
+
+});
