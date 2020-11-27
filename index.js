@@ -15,7 +15,7 @@ if (!firebase.apps.length) {
   firebase.analytics();
 }
 
-// Til: When a user clicks "Sign In" button, it will check if the email and password entered is valid. If it's not, 
+// When a user clicks "Sign In" button, it will check if the email and password entered is valid. If it's not, 
 // then it will show a dialog box with the error message. If it is valid then it will let the user
 // go the home page(home.html).
 //Documentation: https://firebase.google.com/docs/reference/node/firebase.auth.Auth#signinwithemailandpassword
@@ -37,6 +37,7 @@ $("#sign-out-button").click(function () {
 
 });
 
+//Creates a new user account and then updates the NoSQL database with the information that user entered.
 $("#btn-signup").click(async function (e) {
 
   const email = $("#sign_up_email").val()
@@ -89,6 +90,8 @@ $("#btn-signup").click(async function (e) {
 });
 
 // Sending password reset email
+
+// if valid email is entered, it will send password reset email. 
 $("#send_password_reset_email").click(function (e) {
 
   const email = $("#password_reset_email").val()
@@ -105,6 +108,7 @@ $("#send_password_reset_email").click(function (e) {
   }
 });
 
+// if a user clicks "Edit Profile" then they will be taken to a unique profile page
 var goToEditProfilePage = function (){
 // take the user to their profile page
   const userUid = firebase.auth().currentUser.uid
@@ -112,11 +116,12 @@ var goToEditProfilePage = function (){
 
 }
 
+// Update database with new informations that user entered.
 $("#btn-saveEdit").click(async function(){
 
   const db = firebase.firestore();
-  const profileParam = new URLSearchParams(window.location.search);
-  const profileUid = profileParam.get('uid');
+  const profileParam = new URLSearchParams(window.location.search); 
+  const profileUid = profileParam.get('uid');// extract uid from URI
 
   const firstName = $("#firstName_edit_profile").val()
   const lastName = $("#lastName_edit_profile").val()

@@ -16,7 +16,7 @@ var firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-} // TIL: This is what makes a website dynamic. In the code below I am fetching live data from firebase firestore.
+} // This is what makes a website dynamic. In the code below I am fetching live data from firebase firestore.
 // I am retrieving all the users data and then displaying them
 
 

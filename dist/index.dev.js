@@ -15,7 +15,7 @@ var firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-} // Til: When a user clicks "Sign In" button, it will check if the email and password entered is valid. If it's not, 
+} // When a user clicks "Sign In" button, it will check if the email and password entered is valid. If it's not, 
 // then it will show a dialog box with the error message. If it is valid then it will let the user
 // go the home page(home.html).
 //Documentation: https://firebase.google.com/docs/reference/node/firebase.auth.Auth#signinwithemailandpassword
@@ -34,7 +34,8 @@ $("#btn-signIn").click(function () {
 
 $("#sign-out-button").click(function () {
   firebase.auth().signOut(); // check caps
-});
+}); //Creates a new user account and then updates the NoSQL database with the information that user entered.
+
 $("#btn-signup").click(function _callee(e) {
   var email, pass1, passConfirm, bio, firstName, lastName, userId, createdDate, userData, db;
   return regeneratorRuntime.async(function _callee$(_context) {
@@ -106,6 +107,7 @@ $("#btn-signup").click(function _callee(e) {
     }
   });
 }); // Sending password reset email
+// if valid email is entered, it will send password reset email. 
 
 $("#send_password_reset_email").click(function (e) {
   var email = $("#password_reset_email").val();
@@ -120,13 +122,14 @@ $("#send_password_reset_email").click(function (e) {
   } else {
     alert("Email field can't be empty");
   }
-});
+}); // if a user clicks "Edit Profile" then they will be taken to a unique profile page
 
 var goToEditProfilePage = function goToEditProfilePage() {
   // take the user to their profile page
   var userUid = firebase.auth().currentUser.uid;
   window.location.href = "editProfile.html?uid=" + userUid;
-};
+}; // Update database with new informations that user entered.
+
 
 $("#btn-saveEdit").click(function _callee2() {
   var db, profileParam, profileUid, firstName, lastName, bio, updatedData;
@@ -136,7 +139,8 @@ $("#btn-saveEdit").click(function _callee2() {
         case 0:
           db = firebase.firestore();
           profileParam = new URLSearchParams(window.location.search);
-          profileUid = profileParam.get('uid');
+          profileUid = profileParam.get('uid'); // extract uid from URI
+
           firstName = $("#firstName_edit_profile").val();
           lastName = $("#lastName_edit_profile").val();
           bio = $("#enterBio").val();

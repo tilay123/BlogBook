@@ -17,7 +17,7 @@ if (!firebase.apps.length) {
   firebase.analytics();
 }
 
-// TIL: This is what makes a website dynamic. In the code below I am fetching live data from firebase firestore.
+// This is what makes a website dynamic. In the code below I am fetching live data from firebase firestore.
 // I am retrieving all the users data and then displaying them
 const db = firebase.firestore()
 // documentation: https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection
