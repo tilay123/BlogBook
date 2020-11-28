@@ -11,5 +11,5 @@ Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zach Wil
   
 # How do I run this application?
 1. Install required Node.js packages by running the command "npm install" in the project diretory.
-2. Run the command "htt-server" 
+2. Run the command "http-server" 
 3. Finally, copy and paste one of the link outputted by step (2) on your browser.
