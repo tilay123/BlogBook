@@ -16,17 +16,18 @@ var firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
-} // TIL: This is what makes a website dynamic. In the code below I am fetching live data from firebase firestore.
-// I am retrieving all the users data and then displaying them
+} // This is what makes a website dynamic. It will fetch data from firebase firestore.
+// Retrive all the users data and then display them
 
 
 var db = firebase.firestore(); // documentation: https://firebase.google.com/docs/firestore/query-data/get-data#get_multiple_documents_from_a_collection
-// When user submit a post below function will execute. If both image and description exists then it will upload
+// When user submit a profile picture the function below will execute. 
+// If both image and description exists then it will upload
 // it to the firestore and firebase storage
 
 $("#submit_profile_picture").click(function () {
-  var file = $("#imageUpload").prop("files")[0];
-  console.log("File: " + file);
+  //Get profile picture that user uploded
+  var file = $("#imageUpload").prop("files")[0]; // console.log("File: " + file)
 
   if (file == null) {
     alert("Image cannot be empty.");
@@ -41,7 +42,8 @@ $("#submit_profile_picture").click(function () {
 
     var fileName = time.getTime() + "_" + file.name;
     var uploadTask = storageRef.child("profilePictures/" + fileName).put(file);
-    $("#upload_progress_bar_profile").show(); // uploading picture to firestorage
+    $("#upload_progress_bar_profile").show(); // it will first upload the image to Firestorage. (This returns the image url)
+    // Then use the image url to update users' profile picture
     // Documentation: https://firebase.google.com/docs/storage/web/upload-files
 
     uploadTask.on("state_changed", function (snapshot) {

@@ -33,7 +33,7 @@ db.collection("users").get().then(function (querySnapshot) {
   $("#listing").html(htmlCode);
 })["catch"](function (error) {
   console.log("Error getting documents: ", error);
-}); // When user submit a post below function will execute. If both image and description exists then it will upload
+}); // When user submit a post, the function below will execute. If both image and description exists then it will upload
 // it to the firestore and firebase storage
 
 $("#submit_post_button").click(function () {
@@ -60,6 +60,7 @@ $("#submit_post_button").click(function () {
 
     uploadTask.on("state_changed", function (snapshot) {
       //about upload status
+      // Update progress bar when image upload percentage changed.
       var percent = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
       $("#upload_progress_bar").attr("style", "width:" + percent + "%");
 
@@ -83,7 +84,7 @@ $("#submit_post_button").click(function () {
                   while (1) {
                     switch (_context.prev = _context.next) {
                       case 0:
-                        // after we have the download url of the picture
+                        // after we have the download url of the picture we will save the save to Firestore database.
                         blogData = {
                           "imageUrl": downloadUrl,
                           "description": description,

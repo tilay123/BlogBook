@@ -112,9 +112,10 @@
 
     <script src="index.js"></script>
     
-    <!-- authenticator.js runs concurrently every second to check if user is authenticated. -->
+        <!-- Runs when authentication state of the webpage is changed to check if user is authenticated. 
+            It will take the user to homepage (home.html) if the user signed in-->
     <script >
-        // This runs concurrently every second to check if user is authenticated.
+
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 window.location.href = "home.html"

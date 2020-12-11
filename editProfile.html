@@ -100,6 +100,8 @@
     <script src="index.js"></script>
 
     <script>
+        // Extract uid from the URI. Then use that uid to get users first name, lastname, and bio.
+        // Finally, display them in the text box
         const db = firebase.firestore();
         const profileParam = new URLSearchParams(window.location.search);
         const profileUid = profileParam.get('uid');
@@ -114,6 +116,9 @@
         });
 
     </script>
+
+    <!-- Runs when authentication state of the webpage is changed to check if user is authenticated. It will help go 
+    back to sign in page (index.html) if the user sign out-->
     <script>
         firebase.auth().onAuthStateChanged((user) => {
             if (!user) {

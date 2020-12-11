@@ -40,6 +40,7 @@ $("#sign-out-button").click(function () {
 //Creates a new user account and then updates the NoSQL database with the information that user entered.
 $("#btn-signup").click(async function (e) {
 
+  // extract all data from all all textfield
   const email = $("#sign_up_email").val()
   const pass1 = $("#sign_up_password").val()
   const passConfirm = $("#confirm-password").val()
@@ -61,6 +62,7 @@ $("#btn-signup").click(async function (e) {
 
       const createdDate = new Date();
 
+      // users data Object. It will soon be used to upload to the database.
       const userData = {
         "firstName": firstName,
         "lastName": lastName,
@@ -70,14 +72,16 @@ $("#btn-signup").click(async function (e) {
         "email": email
       }
 
-      console.log(userId)
+     // console.log(userId)
       // uploading user data to firstore ***************************************
-      // const admin = require('firebase-admin');
       const db = firebase.firestore();
-      //  .then(function(){})
+
+
+      // save users data that entered by the user to Firestore database.
       await db.collection('users').doc(userId).set(userData).then(function () { }).catch(function (error) {
         alert("Error uploading user Data:" + error.message)
       });
+
       // uploading it to firstore END***************************************
 
     } else {
@@ -116,6 +120,7 @@ var goToEditProfilePage = function (){
 
 }
 
+// Helper function for editProfile.html
 // Update database with new informations that user entered.
 $("#btn-saveEdit").click(async function(){
 
@@ -127,9 +132,10 @@ $("#btn-saveEdit").click(async function(){
   const lastName = $("#lastName_edit_profile").val()
   const bio = $("#enterBio").val()
 
-  if (firstName != "" && lastName!= "" && bio != ""){
+  if (firstName.trim() != "" && lastName.trim()!= "" && bio.trim() != ""){
 
 
+    // users data to be updated
     const updatedData = {
       "firstName": firstName,
       "lastName": lastName,

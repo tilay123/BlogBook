@@ -150,6 +150,7 @@
         <script src="index.js"></script>
 
         <script>
+        // Extract uid from the URI. Then use that uid to get users data
             const profileParam = new URLSearchParams(window.location.search);
             const profileUid = profileParam.get('uid');
 
@@ -164,12 +165,15 @@
             }
             var profile = "";
 
+            // Finally, display them as a profile header.
             db.collection('users').doc(profileUid).get().then(function (doc) {
                 if (doc.exists) {
                     // console.log(doc.data().createdDate)
                     const createdDate = doc.data().createdDate.split(" ");
                     // console.log(createdDate)
 
+
+                    // After getting users data add it to profile header.
                     profile += `
                 <div class="card">
                 <div class="card-body">
@@ -190,12 +194,14 @@
             `;
                     $("#userProfile").html(profile)
                 } else {
+                    // if a user cannot be found with be extracted uid then dispaly this
                     $("#userProfile").html("<h2>Profile Does Not Exist</h2>")
                 }
             })
 
-            // Til: Adding blogs dynamically
-
+            //Adding blogs dynamically
+            // Each user have their own "userBlogs" collection to store their blogs.
+            // Retrive all the blogs of the user(profileUid extracted from URI) then generate html code to display them.
             var blogHtml = "";
             db.collection("blogs").doc(profileUid).collection('userBlogs')
                 .get()
@@ -228,8 +234,8 @@
 
         </script>
 
-        
-
+    <!-- Runs when authentication state of the webpage is changed to check if user is authenticated. 
+        it will take the user to SignIn Page (index.html) if the user signs out-->
         <script>
             firebase.auth().onAuthStateChanged((user) => {
                 if (!user) {

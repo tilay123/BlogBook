@@ -44,7 +44,7 @@ db.collection("users")
     console.log("Error getting documents: ", error);
   });
 
-// When user submit a post below function will execute. If both image and description exists then it will upload
+// When user submit a post, the function below will execute. If both image and description exists then it will upload
 // it to the firestore and firebase storage
 $("#submit_post_button").click( function (){
 
@@ -75,9 +75,9 @@ $("#submit_post_button").click( function (){
     uploadTask.on("state_changed",
       function (snapshot) {
         //about upload status
+        // Update progress bar when image upload percentage changed.
         const percent = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100 )
         
-    
         $("#upload_progress_bar").attr("style", "width:" + percent + "%")
         if (percent == 100){
           $("#upload_progress_bar").html("Successfully Uploded!")
@@ -95,7 +95,7 @@ $("#submit_post_button").click( function (){
         // if successful
 
         uploadTask.snapshot.ref.getDownloadURL().then(async function (downloadUrl) {
-          // after we have the download url of the picture
+          // after we have the download url of the picture we will save the save to Firestore database.
           const blogData = {
             "imageUrl": downloadUrl,
             "description": description,
@@ -118,11 +118,9 @@ $("#submit_post_button").click( function (){
 var goToProfilePage = function (userUid){
   console.log(userUid)
 // take the user to their profile page
-
 if (userUid == null) {
   userUid = firebase.auth().currentUser.uid
 }
   window.location.href = "profile.html?uid=" + userUid
-
 }
 

@@ -42,6 +42,7 @@ $("#btn-signup").click(function _callee(e) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          // extract all data from all all textfield
           email = $("#sign_up_email").val();
           pass1 = $("#sign_up_password").val();
           passConfirm = $("#confirm-password").val();
@@ -51,12 +52,12 @@ $("#btn-signup").click(function _callee(e) {
           console.log("Sign UP:" + email + " " + pass1 + " " + passConfirm);
 
           if (!(email != "" && pass1 != "" && passConfirm != "" && bio != "" && firstName != "" && lastName != "")) {
-            _context.next = 23;
+            _context.next = 22;
             break;
           }
 
           if (!(pass1 == passConfirm)) {
-            _context.next = 20;
+            _context.next = 19;
             break;
           }
 
@@ -67,7 +68,8 @@ $("#btn-signup").click(function _callee(e) {
 
         case 11:
           userId = firebase.auth().currentUser.uid;
-          createdDate = new Date();
+          createdDate = new Date(); // users data Object. It will soon be used to upload to the database.
+
           userData = {
             "firstName": firstName,
             "lastName": lastName,
@@ -75,32 +77,31 @@ $("#btn-signup").click(function _callee(e) {
             "createdDate": createdDate.toString(),
             "uid": userId,
             "email": email
-          };
-          console.log(userId); // uploading user data to firstore ***************************************
-          // const admin = require('firebase-admin');
+          }; // console.log(userId)
+          // uploading user data to firstore ***************************************
 
-          db = firebase.firestore(); //  .then(function(){})
+          db = firebase.firestore(); // save users data that entered by the user to Firestore database.
 
-          _context.next = 18;
+          _context.next = 17;
           return regeneratorRuntime.awrap(db.collection('users').doc(userId).set(userData).then(function () {})["catch"](function (error) {
             alert("Error uploading user Data:" + error.message);
           }));
 
-        case 18:
-          _context.next = 21;
+        case 17:
+          _context.next = 20;
           break;
 
-        case 20:
+        case 19:
           alert("Password didn't match");
 
-        case 21:
-          _context.next = 24;
+        case 20:
+          _context.next = 23;
           break;
 
-        case 23:
+        case 22:
           alert("NO fields can be empty");
 
-        case 24:
+        case 23:
         case "end":
           return _context.stop();
       }
@@ -128,7 +129,8 @@ var goToEditProfilePage = function goToEditProfilePage() {
   // take the user to their profile page
   var userUid = firebase.auth().currentUser.uid;
   window.location.href = "editProfile.html?uid=" + userUid;
-}; // Update database with new informations that user entered.
+}; // Helper function for editProfile.html
+// Update database with new informations that user entered.
 
 
 $("#btn-saveEdit").click(function _callee2() {
@@ -145,11 +147,12 @@ $("#btn-saveEdit").click(function _callee2() {
           lastName = $("#lastName_edit_profile").val();
           bio = $("#enterBio").val();
 
-          if (!(firstName != "" && lastName != "" && bio != "")) {
+          if (!(firstName.trim() != "" && lastName.trim() != "" && bio.trim() != "")) {
             _context2.next = 13;
             break;
           }
 
+          // users data to be updated
           updatedData = {
             "firstName": firstName,
             "lastName": lastName,
