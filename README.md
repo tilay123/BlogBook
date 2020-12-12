@@ -1,8 +1,8 @@
 # BlogBook
 
-BlogBook is a simple dynamic website that allows a user to create an account and a profile. The site was created with the use of javascript and Firebase to assist users with the quality of the site and to keep track of users’ data. Similar to the early stages of social media sites like Facebook or Twitter, in BlogBook, a user can personalize and modify their profile’s username, profile picture, and bio, describing their interests and hobbies. Users can post blogs including pictures with descriptions on their pages and browse other users’ blogs as well. It’s easy to sign up, simply requiring a first and last name, an email address, a password and a short bio.
+BlogBook is a simple dynamic website that is similar to the early stages of social media sites like Facebook or Twitter, in BlogBook, user can sign up, personalize and modify their profile’s name and bio, describing their interests and hobbies. Users can post blogs including pictures with descriptions on their pages and browse other users’ blogs as well. It’s easy to sign up, simply requiring a first and last name, an email address, a password and a short bio.
 
- This is a term project created for CSE389 at Syracuse University. (FALL 2020)
+This is a term project created for CSE389 at Syracuse University. (FALL 2020)
 
 # Authors
 Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zach Williams, and Rory Yang
