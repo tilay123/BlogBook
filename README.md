@@ -8,8 +8,10 @@ This is a term project created for CSE389 at Syracuse University. (FALL 2020)
 Til Bahadur Baniya, Rudolph DelFavero, Samuel M Rosenthal, Kelvin Chen, Zach Williams, and Rory Yang
 
 # Demo
-Link: 
-[![Watch the full demo](.demo/blogBookDemo.gif)](https://drive.google.com/file/d/1Axu3msp7N3Oi90oa0IcFskogE7PKqq0b/view?usp=sharing)
+
+![Video Demo](./demo/blogBookDemo.gif)
+
+Watch the full demo: https://drive.google.com/file/d/1Axu3msp7N3Oi90oa0IcFskogE7PKqq0b/view?usp=sharing
 
 
 # Prerequisites
