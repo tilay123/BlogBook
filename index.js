@@ -1,14 +1,25 @@
+
+// ********************REPLACE THIS WITH YOUR FIREBASE CONFIGURATIONS START ***********
 // // Initializing Firebase project
 var firebaseConfig = {
   apiKey: "AIzaSyABOwyUGeAWpwaPro1iPmIJ3A-wGXaiBv0",
   authDomain: "postbook-f5b68.firebaseapp.com",
-  databaseURL: "https://postbook-f5b68.firebaseio.com",
+  
   projectId: "postbook-f5b68",
   storageBucket: "postbook-f5b68.appspot.com",
   messagingSenderId: "1075694270728",
   appId: "1:1075694270728:web:89e70eee474b1ffa16d4bd",
   measurementId: "G-LN06ME0J6J"
 };
+/* Follow these instructions to get this web application to work:
+  1. Create a Firebase project
+  2. Add a web app from Firebase homepage then replace only the firebaseConfig (We took care of other things)
+  3. Get Started with Authentication then enable "Email/Password"
+  4. Get started with Cloud Firestore (Start in test mode so that you don't have to worry about security rules)
+  5. Follow README.md instructions to run this application
+ 
+// ********************REPLACE THIS WITH YOUR FIREBASE CONFIGURATIONS END *************
+*/
 // Initialize Firebase
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -58,7 +69,7 @@ $("#btn-signup").click(async function (e) {
       });
 
       const userId = firebase.auth().currentUser.uid
-      
+
 
       const createdDate = new Date();
 
@@ -72,7 +83,7 @@ $("#btn-signup").click(async function (e) {
         "email": email
       }
 
-     // console.log(userId)
+      // console.log(userId)
       // uploading user data to firstore ***************************************
       const db = firebase.firestore();
 
@@ -113,8 +124,8 @@ $("#send_password_reset_email").click(function (e) {
 });
 
 // if a user clicks "Edit Profile" then they will be taken to a unique profile page
-var goToEditProfilePage = function (){
-// take the user to their profile page
+var goToEditProfilePage = function () {
+  // take the user to their profile page
   const userUid = firebase.auth().currentUser.uid
   window.location.href = "editProfile.html?uid=" + userUid
 
@@ -122,17 +133,17 @@ var goToEditProfilePage = function (){
 
 // Helper function for editProfile.html
 // Update database with new informations that user entered.
-$("#btn-saveEdit").click(async function(){
+$("#btn-saveEdit").click(async function () {
 
   const db = firebase.firestore();
-  const profileParam = new URLSearchParams(window.location.search); 
+  const profileParam = new URLSearchParams(window.location.search);
   const profileUid = profileParam.get('uid');// extract uid from URI
 
   const firstName = $("#firstName_edit_profile").val()
   const lastName = $("#lastName_edit_profile").val()
   const bio = $("#enterBio").val()
 
-  if (firstName.trim() != "" && lastName.trim()!= "" && bio.trim() != ""){
+  if (firstName.trim() != "" && lastName.trim() != "" && bio.trim() != "") {
 
 
     // users data to be updated

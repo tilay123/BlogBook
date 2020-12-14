@@ -1,16 +1,26 @@
 "use strict";
 
+// ********************REPLACE THIS WITH YOUR FIREBASE CONFIGURATIONS START ***********
 // // Initializing Firebase project
 var firebaseConfig = {
   apiKey: "AIzaSyABOwyUGeAWpwaPro1iPmIJ3A-wGXaiBv0",
   authDomain: "postbook-f5b68.firebaseapp.com",
-  databaseURL: "https://postbook-f5b68.firebaseio.com",
   projectId: "postbook-f5b68",
   storageBucket: "postbook-f5b68.appspot.com",
   messagingSenderId: "1075694270728",
   appId: "1:1075694270728:web:89e70eee474b1ffa16d4bd",
   measurementId: "G-LN06ME0J6J"
-}; // Initialize Firebase
+};
+/* Follow these instructions to get this web application to work:
+  1. Create a Firebase project
+  2. Add a web app from Firebase homepage then replace only the firebaseConfig (We took care of other things)
+  3. Get Started with Authentication then enable "Email/Password"
+  4. Get started with Cloud Firestore (Start in test mode so that you don't have to worry about security rules)
+  5. Follow README.md instructions to run this application
+ 
+// ********************REPLACE THIS WITH YOUR FIREBASE CONFIGURATIONS END *************
+*/
+// Initialize Firebase
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);

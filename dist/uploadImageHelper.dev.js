@@ -1,6 +1,7 @@
 "use strict";
 
-$("#upload_progress_bar_profile").hide(); // Initializing Firebase project
+$("#upload_progress_bar_profile").hide(); // ********************REPLACE THIS WITH YOUR FIREBASE CONFIGURATIONS START ***********
+// Initializing Firebase project
 
 var firebaseConfig = {
   apiKey: "AIzaSyABOwyUGeAWpwaPro1iPmIJ3A-wGXaiBv0",
@@ -11,7 +12,8 @@ var firebaseConfig = {
   messagingSenderId: "1075694270728",
   appId: "1:1075694270728:web:89e70eee474b1ffa16d4bd",
   measurementId: "G-LN06ME0J6J"
-}; // Initialize Firebase
+}; // ********************REPLACE THIS WITH YOUR FIREBASE CONFIGURATIONS END *************
+// Initialize Firebase
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
