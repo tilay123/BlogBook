@@ -17,7 +17,7 @@ Watch the full demo: https://drive.google.com/file/d/1Axu3msp7N3Oi90oa0IcFskogE7
 # Prerequisites
   1. Install Node.js and npm. More Info: https://www.npmjs.com/get-npm
   2. Install http-server globally. More Info: https://www.npmjs.com/package/http-server
-  3. Replace Firebase Configurations in both "index.js" and "uploadImagehelper.js." Instructions given in index.js.
+  3. Replace Firebase Configurations in "index.js", "uploadImagehelper.js", and "homepageHelper.js" Instructions given in index.js.
   
   
 # How do I run this application?
